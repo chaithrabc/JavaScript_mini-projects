@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>To-Do List</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 50%;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .container h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        .input-group {
+            margin-bottom: 20px;
+        }
+
+        .input-group input[type="text"] {
+            width: 70%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        .form-group input[type="button"] {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .form-group input[type="button"]:hover {
+            background-color: #45a049;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            background-color: #f9f9f9;
+            padding: 10px;
+            margin-bottom: 5px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        li:hover {
+            background-color: #f0f0f0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>To-Do List</h1>
+        <div class="input-group">
+            <input type="text" placeholder="Enter todo-item" id="box">
+        </div>
+        <div class="form-group">
+            <input type="button" value="Add" onclick="addItem()">
+        </div>
+        <ul id="listItem"></ul>
+    </div>
+
+    <script type="text/javascript">
+        function addItem() {
+            const item = document.getElementById("box");
+            const listItem = document.getElementById("listItem");
+            const value = item.value.trim();
+
+            if (value !== "") {
+                const li = document.createElement("li");
+                li.textContent = value;
+                listItem.appendChild(li);
+
+                li.addEventListener("click", function () {
+                    this.parentNode.removeChild(this);
+                });
+
+                item.value = "";
+            } else {
+                alert("Please add a value to item");
+            }
+        }
+    </script>
+</body>
+</html>
